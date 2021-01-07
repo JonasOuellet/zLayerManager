@@ -7,9 +7,9 @@ class DeactivateRecord(ZRoutine):
         return '''
         [RoutineDef, zdr,
             // Check there is layer first
-            [If, [IsEnabled, 376],
+            [If, [IsEnabled, 359],
             
-                [If, [IsDisabled, 368],
+                [If, [IsDisabled, 351],
                     [ISet, "Tool:Geometry:SDiv", [IGetMax, "Tool:Geometry:SDiv"], 0]
                 ]
 
@@ -36,20 +36,20 @@ class SetLayerMode(ZLayerRoutine):
             [ISet, "Tool:Layers:Layers Scrollbar", 0, index]
 
             [If, mode == 2,
-                [ISet, 368, intensity]
+                [ISet, 351, intensity]
             ]
 
-            [VarSet, curMode, [IModGet, 368]]
+            [VarSet, curMode, [IModGet, 351]]
 
             [If, curMode != mode,
-                [VarSet, wid, [IWidth, 368]]
+                [VarSet, wid, [IWidth, 351]]
                 [If, mode == 1,
-                    [IClick, 368, wid-20, 5]
+                    [IClick, 351, wid-20, 5]
                 ,
                     [If, curMode == 1,
-                        [IClick, 368, wid-10, 5]
+                        [IClick, 351, wid-10, 5]
                     ]
-                    [IClick, 368, wid-5, 5]
+                    [IClick, 351, wid-5, 5]
                 ]
             ]
         , index, mode, intensity]
@@ -69,7 +69,7 @@ class SetIntensity(ZLayerRoutine):
         return '''
         [RoutineDef, zi,
             [ISet, "Tool:Layers:Layers Scrollbar", 0, index]
-            [ISet, 368, intensity]
+            [ISet, 351, intensity]
         , index, intensity]
         '''
 
@@ -88,11 +88,11 @@ class ExportLayer(ZLayerRoutine):
             [ISet, "Tool:Layers:Layers Scrollbar", 0, index]
 
             // Activate
-            [VarSet, wid, [IWidth, 368]]
-            [ISet, 368, 1.0]
+            [VarSet, wid, [IWidth, 351]]
+            [ISet, 351, 1.0]
 
-            [If, [IModGet, 368] == 0,
-                [IClick, 368, wid-5, 5]
+            [If, [IModGet, 351] == 0,
+                [IClick, 351, wid-5, 5]
             ]
 
             // save
@@ -100,7 +100,7 @@ class ExportLayer(ZLayerRoutine):
             [IKeyPress, 13, [IPress, TOOL:Export:Export]]
 
             // Deactivate
-            [IClick, 368, wid-5, 5]
+            [IClick, 351, wid-5, 5]
 
         , index, savePath]
         '''
@@ -160,7 +160,7 @@ class FocusLayer(ZLayerRoutine):
         return '''
         [RoutineDef, zfl,
             [ISet, "Tool:Layers:Layers Scrollbar", 0, index]
-            [IClick, 368, 5, 5]
+            [IClick, 351, 5, 5]
         , index]
         '''
 

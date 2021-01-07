@@ -18,7 +18,7 @@
 
 
 // we should use these number instead of interface path if there is two layer with the same name
-// layers goes from 368 to 375
+// layers goes from 351 to 375
 
 [RoutineDef, zlmGetLayerCount,
     [IFreeze,
@@ -64,7 +64,7 @@
 
         // if layer widget is disabled and we have layers it means that there is a layer on record
         // in this case we have to activate higher subdiv to deactivate it
-        [If, [IsDisabled, 368],
+        [If, [IsDisabled, 351],
             [ISet, "Tool:Geometry:SDiv", [IGetMax, "Tool:Geometry:SDiv"], 0]
         ]
 
@@ -80,11 +80,11 @@
         ]
 
         // deactivate Recording
-        [If, ([IModGet, 368] == 1),
+        [If, ([IModGet, 351] == 1),
             [VarSet, isRecording, 1]
             
-            [VarSet, wid, [IWidth, 368]]	
-            [IClick, 368, wid-10, 5]
+            [VarSet, wid, [IWidth, 351]]	
+            [IClick, 351, wid-10, 5]
 
             [VarSet, recordingYpos, [IGetSecondary, "Tool:Layers:Layers Scrollbar"]]
         ]
@@ -104,9 +104,9 @@
         [VarSet, scrollbarPos, layersCount - counter - 1]
         [ISet, "Tool:Layers:Layers Scrollbar", 0, #scrollbarPos]
 
-        [VarSet, curLayerName, [IGetTitle, 368]]
-        [VarSet, intensity, [IGet, 368]]
-        [VarSet, mode, [IModGet, 368]]
+        [VarSet, curLayerName, [IGetTitle, 351]]
+        [VarSet, intensity, [IGet, 351]]
+        [VarSet, mode, [IModGet, 351]]
         
         [If, (#isRecording && (#scrollbarPos == #recordingYpos)),
             [VarSet, mode, 1]
@@ -152,8 +152,8 @@
     // If was recording
     [If, #isRecording, 
         [ISet, "Tool:Layers:Layers Scrollbar", 0, recordingYpos]
-        [VarSet, wid, [IWidth, 368]]
-        [IClick, 368, wid-20, 5]
+        [VarSet, wid, [IWidth, 351]]
+        [IClick, 351, wid-20, 5]
     ]
 
     // restore scroll bar position
